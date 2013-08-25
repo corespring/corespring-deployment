@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+folder = File.expand_path(File.dirname(__FILE__))
+require_relative "#{folder}/../../../../libs/ruby/backup-db"
+BackupDb.new.run
