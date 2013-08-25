@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require_relative '../../../../libs/ruby'
+include Utils
+
+on_path "s3cmd"
+on_path "cs-api-assets"
+has_folder "~/cs-api-assets"
+
+target_bucket = env_var "ENV_AMAZON_ASSETS_BUCKET"
+live_bucket = env_var "CORESPRING_LIVE_ASSETS_BUCKET"
+
+run_cmd "cd ~/cs-api-assets"
+run_cmd "cs-api-assets pull-bucket #{live_bucket}"
+run_cmd "cs-api-assets push-bucket #{live_bucket} --remote-bucket=#{target_bucket}"
