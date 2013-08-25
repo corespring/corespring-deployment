@@ -1,11 +1,19 @@
 #!/usr/bin/env ruby
-require_relative '../../../../libs/ruby'
-include Utils
+folder = File.expand_path(File.dirname(__FILE__))
+require_relative "#{folder}/../../../../libs/ruby/base-runner"
 
-# See: github.com/corespring/mongo-migrator for more information
-jar = env_var "MIGRATIONS_JAR"
-migrations_path = env_var "MIGRATIONS_PATH"
-mongo_uri = env_var "ENV_MONGO_URI"
-replica_set_name = env_var "ENV_MONGO_REPLICA_SET_NAME", false
-uri = get_migrator_uri(mongo_uri, replica_set_name)
-run_cmd "java -jar #{jar} migrate #{commit_hash} \"#{uri}\" #{migrations_path}"
+class Runner
+  include BaseRunner
+
+  def run
+    # See: github.com/corespring/mongo-migrator for more information
+    jar = env_var "MIGRATIONS_JAR"
+    migrations_path = env_var "MIGRATIONS_PATH"
+    mongo_uri = env_var "ENV_MONGO_URI"
+    replica_set_name = env_var "ENV_MONGO_REPLICA_SET_NAME", false
+    uri = get_migrator_uri(mongo_uri, replica_set_name)
+    run_cmd "java -jar #{jar} migrate #{commit_hash} \"#{uri}\" #{migrations_path}"
+  end
+end
+
+Runner.new.run
