@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+folder = File.expand_path(File.dirname(__FILE__))
+p = "#{folder}/../../../../libs/ruby/"
+require_relative "#{p}/copy-live-db"
+require_relative "#{p}/run-migrations"
+require_relative "#{p}/copy-s3-assets"
+CopyLiveDb.new.run
+RunMigrations.new.run
+CopyS3Assets.new.run
