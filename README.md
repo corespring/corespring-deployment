@@ -1,4 +1,4 @@
-# Corespring Api Deployment
+# Corespring Deployment
 
 Deployment scripts to be run by the [deploy-tool](https://github.com/corespring/deploy-cli).
 
