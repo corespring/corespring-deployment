@@ -3,5 +3,5 @@ folder = File.expand_path(File.dirname(__FILE__))
 p = "#{folder}/../../../../libs/ruby/"
 require_relative "#{p}/run-migrations"
 require_relative "#{p}/commit-hash"
-commit_hash = CommitHash.get("APP_PATH", "release")
+commit_hash = CommitHash.new.get("APP_PATH", "release")
 RunMigrations.new.run(commit_hash)
