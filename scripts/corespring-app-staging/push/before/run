@@ -4,6 +4,8 @@ p = "#{folder}/../../../../libs/ruby/"
 require_relative "#{p}/copy-live-db"
 require_relative "#{p}/run-migrations"
 require_relative "#{p}/copy-s3-assets"
+require_relative "#{p}/commit-hash"
 CopyLiveDb.new.run
-RunMigrations.new.run
+commit_hash = CommitHash.get("APP_PATH", "release")
+RunMigrations.new.run(commit_hash)
 CopyS3Assets.new.run

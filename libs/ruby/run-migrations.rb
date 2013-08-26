@@ -3,7 +3,7 @@ require_relative 'base-runner'
 class RunMigrations
   include BaseRunner
 
-  def run
+  def run(commit_hash)
     # See: github.com/corespring/mongo-migrator for more information
     jar = jar_file( env_var("LIBS_FOLDER") )
     log "jar file: #{jar}"
@@ -31,15 +31,6 @@ class RunMigrations
     else
       uri
     end
-  end
-
-  def commit_hash
-    hash = ""
-    app_path = env_var "APP_PATH"
-    in_dir(app_path){
-      hash = `git rev-parse --short HEAD`.strip
-    }
-    hash
   end
 
 end
