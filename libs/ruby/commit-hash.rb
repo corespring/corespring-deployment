@@ -10,6 +10,7 @@ class CommitHash
     in_dir(path){
       with_branch(branch){
         run_cmd "git fetch origin"
+        run_cmd "git pull origin #{branch}"
         hash = `git rev-parse --short HEAD`.strip
       }
     }
