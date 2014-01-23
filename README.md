@@ -16,9 +16,20 @@ Before you run you'll need to configure the environments files, these aren't in 
     cd corespring-deployment
     deploy-tool push before corespring-app-qa
 
+
+
+
 This will set the env vars in `env/common/*.properties` and `env/corespring-app-qa/*.properties`, then run the scripts in this order: `scripts/common/push/before/*` then `scripts/corespring-app-qa/push/before/*`.
 
 You'll finally want to set the following env vars:
+
+
+## Heroku Env vars
+
+Note that these env vars are to allow you to run the scripts - they aren't env vars for your heroku instance.
+
+### TODO: How do we update heroku env vars?
+
 
 * APP_PATH - the path to the corespring-api source
 * MIGRATIONS_PATH - the path to the migrations folder in the corepsring-api source
