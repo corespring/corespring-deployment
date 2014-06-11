@@ -17,8 +17,6 @@ Before you run you'll need to configure the environments files, these aren't in 
     deploy-tool push before corespring-app-qa
 
 
-
-
 This will set the env vars in `env/common/*.properties` and `env/corespring-app-qa/*.properties`, then run the scripts in this order: `scripts/common/push/before/*` then `scripts/corespring-app-qa/push/before/*`.
 
 You'll finally want to set the following env vars:
@@ -39,5 +37,4 @@ Note that these env vars are to allow you to run the scripts - they aren't env v
 
 * [deploy-tool](https://github.com/corespring/deploy-cli)
 * [mongo-db-utils](https://github.com/edeustace/mongo-db-utils)
-* [cs-api-assets](https://github.com/corespring/corespring-api-assets)
-* [s3cmd-modification](https://github.com/corespring/s3cmd-modification)
+* [aws cli](http://aws.amazon.com/cli/)
