@@ -38,3 +38,11 @@ Note that these env vars are to allow you to run the scripts - they aren't env v
 * [deploy-tool](https://github.com/corespring/deploy-cli)
 * [mongo-db-utils](https://github.com/edeustace/mongo-db-utils)
 * [aws cli](http://aws.amazon.com/cli/)
+
+### Notes
+
+#### Aws Cli
+
+It is advisable that you set the default region to: us-east-1 when running `aws configure`. It runs much faster.
+
+
