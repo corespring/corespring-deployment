@@ -9,4 +9,4 @@ CopyLiveDb.new.run
 commit_hash = CommitHash.new.get("APP_PATH", "v2-player")
 RunMigrations.new.run(commit_hash)
 CopyS3Assets.new.run
-require_relative "#{p}/flash-cache"
+require_relative "#{p}/flush-cache"
