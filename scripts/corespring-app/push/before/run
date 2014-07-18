@@ -5,3 +5,4 @@ require_relative "#{p}/run-migrations"
 require_relative "#{p}/commit-hash"
 commit_hash = CommitHash.new.get("APP_PATH", "release")
 RunMigrations.new.run(commit_hash)
+require_relative "#{p}/flash-cache"

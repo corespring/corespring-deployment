@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+folder = File.expand_path(File.dirname(__FILE__))
+p = "#{folder}/../../../../libs/ruby/"
+require_relative "#{p}/flash-cache"
