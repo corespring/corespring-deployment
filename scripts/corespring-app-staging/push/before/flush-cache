@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'dalli'
+require 'memcachier'
+
+MEMCACHIER_SERVERS = %x(heroku config:get MEMCACHIER_SERVERS -a corespring-app-devt).chop
+MEMCACHIER_USERNAME = %x(heroku config:get MEMCACHIER_USERNAME -a corespring-app-devt).chop
+MEMCACHIER_PASSWORD = %x(heroku config:get MEMCACHIER_PASSWORD -a corespring-app-devt).chop
+
+cache = Dalli::Client.new(MEMCACHIER_SERVERS.split(","),
+{:username => MEMCACHIER_USERNAME,
+ :password => MEMCACHIER_PASSWORD,
+ :failover => true,
+ :socket_timeout => 1.5,
+ :socket_failure_delay => 0.2
+})
+
+cache.flush
