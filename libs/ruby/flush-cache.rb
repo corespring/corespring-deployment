@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'dalli'
+require_relative 'base-runner'
 
-class RunMigrations
+class FlushCache
   include BaseRunner
 
   def run
