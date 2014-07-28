@@ -5,6 +5,10 @@ require_relative "#{p}/copy-live-db"
 require_relative "#{p}/run-migrations"
 require_relative "#{p}/copy-s3-assets"
 require_relative "#{p}/commit-hash"
+
+require_relative "#{p}/flush-cache"
+FlushCache.new.run
+
 CopyLiveDb.new.run
 commit_hash = CommitHash.new.get("APP_PATH", "v2-player")
 RunMigrations.new.run(commit_hash)
