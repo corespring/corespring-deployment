@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 
 require 'dalli'
 require_relative 'base-runner'
@@ -7,6 +6,9 @@ class FlushCache
   include BaseRunner
 
   def run
+
+    log "Running FlushCache"
+
     raise "Can't flush cache TARGET_APP_NAME is not defined" unless ENV.has_key?("TARGET_APP_NAME")
 
     target_app_name = ENV["TARGET_APP_NAME"]
@@ -15,8 +17,7 @@ class FlushCache
     memcachierUsername = %x(heroku config:get MEMCACHIER_USERNAME -a #{target_app_name}).chop
     memcachierPassword = %x(heroku config:get MEMCACHIER_PASSWORD -a #{target_app_name}).chop
 
-    if all_present?(MEMCACHIER_SERVERS MEMCACHIER_USERNAME MEMCACHIER_PASSWORD)
-        
+    if all_present?(memcachierServers, memcachierUsername ,memcachierPassword)
       cache = Dalli::Client.new(memcachierServers.split(","),
       {:username => memcachierUsername,
        :password => memcachierPassword,
