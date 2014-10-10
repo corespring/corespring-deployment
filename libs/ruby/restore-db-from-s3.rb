@@ -1,13 +1,17 @@
 require_relative 'base-runner'
 
+require 'tmpdir'
 require 'mongo-db-utils/cmd'
+require 'mongo-db-utils/s3'
 require 'mongo-db-utils/version'
 require 'mongo-db-utils/tools/commands'
 require 'mongo-db-utils/models/db'
 
 
+
 class RestoreDbFromS3
   include BaseRunner
+  include MongoDbUtils
 
   def run
     live_db_name = 'corespring-production'
@@ -22,7 +26,7 @@ class RestoreDbFromS3
 
     Dir.mktmpdir do |tmp_dir|
       backup = Cmd.download_backup_from_s3(tmp_dir, 'latest', bucket_name, access_key_id, secret_access_key)
-      Cmd.restore_from_backup(tmp_dir, target_db, backup, live_db_name )
+      Cmd.restore_from_backup(tmp_dir, target_db, File.basename(backup), live_db_name )
     end    
   end
 
