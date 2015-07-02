@@ -5,6 +5,6 @@ require_relative "#{p}/run-migrations"
 require_relative "#{p}/commit-hash"
 require_relative "#{p}/flush-cache"
 
-FlushCache.new.run
-commit_hash = CommitHash.new.get("APP_PATH", "release")
+#FlushCache.new.run
+commit_hash = CommitHash.new.get("APP_PATH", "rel3-4")
 RunMigrations.new.run(commit_hash)
