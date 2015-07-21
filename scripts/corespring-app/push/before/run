@@ -4,7 +4,14 @@ p = "#{folder}/../../../../libs/ruby/"
 require_relative "#{p}/run-migrations"
 require_relative "#{p}/commit-hash"
 require_relative "#{p}/flush-cache"
+require_relative "#{p}/seed-static-data"
+
+## Note - we can use this for the newly named release branches..
+# before running the script they'll need to export:
+# TARGET_BRANCH
+branch = ENV["TARGET_BRANCH"] || "rel3-4"
 
 #FlushCache.new.run
-commit_hash = CommitHash.new.get("APP_PATH", "rel3-4")
+commit_hash = CommitHash.new.get("APP_PATH", branch)
+SeedStaticData.new.run("APP_PATH", branch)
 RunMigrations.new.run(commit_hash)

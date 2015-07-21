@@ -2,5 +2,12 @@
 folder = File.expand_path(File.dirname(__FILE__))
 p = "#{folder}/../../../../libs/ruby/"
 require_relative "#{p}/flush-cache"
+require_relative "#{p}/seed-static-data"
+
+## Note - we can use this for the newly named release branches..
+# before running the script they'll need to export:
+# TARGET_BRANCH
+branch = ENV["TARGET_BRANCH"] || "develop"
 
 FlushCache.new.run
+SeedStaticData.new.run("APP_PATH", branch)
