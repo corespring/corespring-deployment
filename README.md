@@ -28,6 +28,9 @@ Note that these env vars are to allow you to run the scripts - they aren't env v
 
 ### TODO: How do we update heroku env vars?
 
+Set the following variables in:
+
+>corespring-deployment/env/common/common.properties
 
 * APP_PATH - the path to the corespring-api source
 * MIGRATIONS_PATH - the path to the migrations folder in the corepsring-api source
