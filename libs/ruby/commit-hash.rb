@@ -8,8 +8,8 @@ class CommitHash
     hash = ""
     puts Dir.pwd
     in_dir(path){
+      run_cmd "git fetch origin"
       with_branch(branch){
-        run_cmd "git fetch origin"
         run_cmd "git pull origin #{branch}"
         hash = `git rev-parse --short HEAD`.strip
       }
